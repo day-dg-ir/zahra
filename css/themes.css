@@ -1,0 +1,59 @@
+/*
+ * پالت‌های رنگی پروژه
+ * برای عوض کردن تم، مقدار data-theme در تگ <html> در index.html را تغییر دهید:
+ * burgundy | green | yellow | sky
+ */
+
+:root,
+:root[data-theme="burgundy"] {
+    --primary: #9b2445;
+    --primary-light: #d45b78;
+    --primary-dark: #68172f;
+    --primary-rgb: 155, 36, 69;
+    --secondary: #c7778b;
+    --secondary-rgb: 199, 119, 139;
+    --accent: #e6a943;
+    --accent-gold: #f0c96b;
+    --accent-rgb: 230, 169, 67;
+    --gradient-1: linear-gradient(135deg, var(--primary), var(--secondary));
+    --gradient-2: linear-gradient(135deg, var(--primary-light), var(--primary), var(--secondary));
+    --gradient-3: linear-gradient(135deg, var(--accent-gold), var(--primary));
+    --gradient-glow: linear-gradient(135deg, rgba(var(--primary-rgb), 0.3), rgba(var(--secondary-rgb), 0.3));
+    --shadow-glow: 0 0 30px rgba(var(--primary-rgb), 0.3);
+}
+
+:root[data-theme="green"] {
+    --primary: #25865d;
+    --primary-light: #65c99a;
+    --primary-dark: #14583c;
+    --primary-rgb: 37, 134, 93;
+    --secondary: #82c9a3;
+    --secondary-rgb: 130, 201, 163;
+    --accent: #bedb63;
+    --accent-gold: #d7e887;
+    --accent-rgb: 190, 219, 99;
+}
+
+:root[data-theme="yellow"] {
+    --primary: #d69d16;
+    --primary-light: #ffda65;
+    --primary-dark: #96680a;
+    --primary-rgb: 214, 157, 22;
+    --secondary: #edc85a;
+    --secondary-rgb: 237, 200, 90;
+    --accent: #ef8f46;
+    --accent-gold: #ffe17a;
+    --accent-rgb: 239, 143, 70;
+}
+
+:root[data-theme="sky"] {
+    --primary: #238bbd;
+    --primary-light: #79ccef;
+    --primary-dark: #155e88;
+    --primary-rgb: 35, 139, 189;
+    --secondary: #7eafe0;
+    --secondary-rgb: 126, 175, 224;
+    --accent: #f0bd55;
+    --accent-gold: #ffdc80;
+    --accent-rgb: 240, 189, 85;
+}

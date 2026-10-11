@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<!-- متن‌های صفحه در content.json قابل ویرایش‌اند؛ برای تغییر رنگ، مقدار data-theme را عوض کنید. -->
+<html lang="fa" dir="rtl" data-theme="burgundy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روز دختر مبارک 🌸</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+
+    <!-- ==================== PRELOADER ==================== -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-flower">
+                <div class="petal petal-1"></div>
+                <div class="petal petal-2"></div>
+                <div class="petal petal-3"></div>
+                <div class="petal petal-4"></div>
+                <div class="petal petal-5"></div>
+                <div class="petal petal-6"></div>
+                <div class="petal-center"></div>
+            </div>
+            <p class="preloader-text">در حال آماده‌سازی...</p>
+            <div class="preloader-bar">
+                <div class="preloader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CURSOR ==================== -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <!-- ==================== FLOATING PARTICLES ==================== -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ==================== MUSIC PLAYER ==================== -->
+    <div class="music-player" id="musicPlayer">
+        <button class="music-toggle" id="musicToggle" aria-label="پخش موسیقی">
+            <div class="music-icon">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+                <span class="bar bar-4"></span>
+                <span class="bar bar-5"></span>
+            </div>
+        </button>
+        <div class="music-info">
+            <span class="music-title">♪ موسیقی پس‌زمینه</span>
+        </div>
+    </div>
+    <audio id="bgMusic" loop preload="auto" autoplay>
+        <source src="assets/music/music.mp3" type="audio/mpeg">
+    </audio>
+
+
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient-orb orb-1"></div>
+            <div class="hero-gradient-orb orb-2"></div>
+            <div class="hero-gradient-orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <!-- نام شخص را دستی در همین خط تغییر دهید -->
+            <div class="hero-name">
+                <span class="name-label" data-content="hero.nameLabel">تقدیم به</span>
+                <h2 class="person-name" data-content="recipientName">نام دختر عزیز</h2>
+            </div>
+            <div class="hero-badge">
+                <span>🌸</span>
+                <span data-content="hero.badge">ویژه روز دختر</span>
+                <span>🌸</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line title-line-1">
+                    <span class="word">روز</span>
+                    <span class="word">دختر</span>
+                </span>
+                <span class="title-line title-line-2">
+                    <span class="word highlight">مبارک</span>
+                </span>
+            </h1>
+            <p class="hero-subtitle" data-content="hero.subtitle">
+                تو گل‌واژه‌ای از بهشتی، که خدا با عشق سرودت
+            </p>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span data-content="hero.scrollText">اسکرول کنید</span>
+        </div>
+        <!-- Falling petals -->
+        <div class="falling-petals" id="fallingPetals"></div>
+    </section>
+
+    <!-- ==================== صفات تو - ABOUT SECTION ==================== -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title reveal-text"><span class="text-gradient" data-content="recipientName">نام دختر عزیز</span><span data-content="traits.titleSuffix">، این تویی!</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-card card-1">
+                    <div class="card-icon">👑</div>
+                    <h3 data-content="traits.items.0.title">قدرتی از جنس مهربانی</h3>
+                    <p data-content="traits.items.0.description">با قلب مهربانت به آدم‌های اطرافت آرامش می‌بخشی و دنیا را جای قشنگ‌تری می‌کنی.</p>
+                </div>
+                <div class="about-card card-2">
+                    <div class="card-icon">💫</div>
+                    <h3 data-content="traits.items.1.title">شجاع و شکست‌ناپذیر</h3>
+                    <p data-content="traits.items.1.description">از سختی‌ها راهی برای قوی‌تر شدن می‌سازی؛ هیچ رؤیایی برای تو دور از دسترس نیست.</p>
+                </div>
+                <div class="about-card card-3">
+                    <div class="card-icon">🦋</div>
+                    <h3 data-content="traits.items.2.title">درخشان و الهام‌بخش</h3>
+                    <p data-content="traits.items.2.description">با استعداد و نگاه ویژه‌ات، به دیگران جرئت می‌دهی خود واقعی‌شان باشند و بدرخشند.</p>
+                </div>
+                <div class="about-card card-4">
+                    <div class="card-icon">💎</div>
+                    <h3 data-content="traits.items.3.title">آزاد و بی‌همتا</h3>
+                    <p data-content="traits.items.3.description">صدای خودت را داری و مسیرت را خودت انتخاب می‌کنی؛ ارزش تو به هیچ‌کس شبیه نیست.</p>
+                </div>
+                <div class="about-card card-5">
+                    <div class="card-icon">🌿</div>
+                    <h3 data-content="traits.items.4.title">هم‌نفس با طبیعت</h3>
+                    <p data-content="traits.items.4.description">در طبیعت آرامش و زیبایی‌های کوچک را پیدا می‌کنی.</p>
+                </div>
+                <div class="about-card card-6">
+                    <div class="card-icon">🍒</div>
+                    <h3 data-content="traits.items.5.title">کمی ترش، خیلی دوست‌داشتنی!</h3>
+                    <p data-content="traits.items.5.description">خاص و پرهیجانی؛ ترکیبی شیرین و ترش که تو را بی‌تکرار می‌کند.</p>
+                </div>
+                <div class="about-card card-7">
+                    <div class="card-icon">🌟</div>
+                    <h3 data-content="traits.items.6.title">اهل تلاش، عاشق رؤیا</h3>
+                    <p data-content="traits.items.6.description">برای رؤیاهایت قدم برمی‌داری و بعد از سختی‌ها دوباره بلند می‌شوی.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MARQUEE SECTION ==================== -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span data-content="marquee.0">دختر یعنی عشق</span>
+                <span class="marquee-dot">✿</span>
+                <span data-content="marquee.1">دختر یعنی زیبایی</span>
+                <span class="marquee-dot">✿</span>
+                <span data-content="marquee.2">دختر یعنی مهربانی</span>
+                <span class="marquee-dot">✿</span>
+                <span data-content="marquee.3">دختر یعنی نور</span>
+                <span class="marquee-dot">✿</span>
+                <span data-content="marquee.4">دختر یعنی لطافت</span>
+                <span class="marquee-dot">✿</span>
+                <span data-content="marquee.0">دختر یعنی عشق</span>
+                <span class="marquee-dot">✿</span>
+                <span data-content="marquee.1">دختر یعنی زیبایی</span>
+                <span class="marquee-dot">✿</span>
+                <span data-content="marquee.2">دختر یعنی مهربانی</span>
+                <span class="marquee-dot">✿</span>
+                <span data-content="marquee.3">دختر یعنی نور</span>
+                <span class="marquee-dot">✿</span>
+                <span data-content="marquee.4">دختر یعنی لطافت</span>
+                <span class="marquee-dot">✿</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== صفت ۱ ==================== -->
+    <div class="trait-divider">
+        <div class="trait-content">
+            <span class="trait-emoji">🌺</span>
+            <p class="trait-text"><span data-content="traitDivider.prefix">دختر یعنی </span><strong data-content="traitDivider.highlight">قدرت پنهان در ظرافت</strong><span data-content="traitDivider.suffix">، شکننده به نظر میاد ولی محکم‌تر از کوهه</span></p>
+        </div>
+    </div>
+
+    <!-- ==================== WISHES SECTION ==================== -->
+    <section class="wishes" id="wishes">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag" data-content="wishes.tag">پیام تبریک</span>
+                <h2 class="section-title reveal-text"><span data-content="wishes.titlePrefix">از صمیم </span><span class="text-gradient" data-content="wishes.titleHighlight">قلب</span></h2>
+            </div>
+            <div class="wishes-grid">
+                <div class="wish-card">
+                    <div class="wish-card-inner">
+                        <div class="wish-card-front">
+                            <div class="wish-emoji">🌸</div>
+                            <h3><span data-content="recipientName">نام دختر عزیز</span><span data-content="wishes.cards.0.titleSuffix"> عزیزم</span></h3>
+                            <p class="wish-hint" data-content="wishes.hint">کلیک کنید...</p>
+                        </div>
+                        <div class="wish-card-back">
+                            <p data-content="wishes.cards.0.message">تو زیباترین هدیه‌ای هستی که خدا به دنیا داده. روزت مبارک، گل زیبای من! هر روزت پر از شادی و لبخند باشه. ✨</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-card-inner">
+                        <div class="wish-card-front">
+                            <div class="wish-emoji">🦋</div>
+                            <h3 data-content="wishes.cards.1.title">پروانه زیبا</h3>
+                            <p class="wish-hint" data-content="wishes.hint">کلیک کنید...</p>
+                        </div>
+                        <div class="wish-card-back">
+                            <p data-content="wishes.cards.1.message">مثل پروانه‌ای زیبا، همیشه در اوج باش و بال‌هایت را برای پرواز بگستران. دنیا به رنگ تو زیباتر است! 🌈</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-card-inner">
+                        <div class="wish-card-front">
+                            <div class="wish-emoji">💎</div>
+                            <h3 data-content="wishes.cards.2.title">الماس درخشان</h3>
+                            <p class="wish-hint" data-content="wishes.hint">کلیک کنید...</p>
+                        </div>
+                        <div class="wish-card-back">
+                            <p data-content="wishes.cards.2.message">تو گرانبهاترین الماس خلقتی. بدرخش و بتاب! هیچ‌وقت ارزش واقعی خودت رو فراموش نکن. روزت مبارک! 💫</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-card-inner">
+                        <div class="wish-card-front">
+                            <div class="wish-emoji" data-content="flowerCard.selected.emoji">🌹</div>
+                            <h3 data-content="flowerCard.selected.title">گل رز</h3>
+                            <p class="wish-hint" data-content="wishes.hint">کلیک کنید...</p>
+                        </div>
+                        <div class="wish-card-back">
+                            <p data-content="flowerCard.selected.message">مثل گل رز، زیبایی‌ات در کنار قدرت و استواری‌ات می‌درخشد. حضورت به دنیا رنگ عشق و لطافت می‌دهد. 🌹</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PARALLAX DIVIDER ==================== -->
+    <div class="parallax-divider">
+        <div class="parallax-content">
+            <h2 class="parallax-quote" data-content="quote">«دختران، فرشتگان زمینی‌اند که با بال‌های مهربانی پرواز می‌کنند»</h2>
+        </div>
+    </div>
+
+    <!-- ==================== COUNTER SECTION ==================== -->
+    <section class="counter-section">
+        <div class="section-container">
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <div class="counter-number" data-target="1000" data-content-attr="data-target:stats.items.0.value">0</div>
+                    <div class="counter-label" data-content="stats.items.0.label">لبخند زیبا</div>
+                    <div class="counter-icon">😊</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" data-target="999" data-content-attr="data-target:stats.items.1.value">0</div>
+                    <div class="counter-label" data-content="stats.items.1.label">گل تقدیمی</div>
+                    <div class="counter-icon">🌹</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" data-target="365" data-content-attr="data-target:stats.items.2.value">0</div>
+                    <div class="counter-label" data-content="stats.items.2.label">روز عاشقانه</div>
+                    <div class="counter-icon">💕</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" data-target="1" data-content-attr="data-target:stats.items.3.value">0</div>
+                    <div class="counter-label" data-content="stats.items.3.label">دختر بی‌نظیر</div>
+                    <div class="counter-icon">👑</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FINAL MESSAGE ==================== -->
+    <section class="final-message">
+        <div class="section-container">
+            <div class="final-content">
+                <div class="final-emoji">🎀</div>
+                <h2 class="final-title" data-content="final.title">روزت مبارک</h2>
+                <p class="final-text">
+                    <span data-content="final.line1">امیدوارم هر روزت پر از شادی، عشق و موفقیت باشه.</span>
+                    <br>
+                    <span data-content="final.line2">تو لایق بهترین‌هایی. ✨</span>
+                </p>
+                <div class="final-hearts">
+                    <span>💖</span><span>💗</span><span>💝</span><span>💖</span><span>💗</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-flower">✿</div>
+            <p><span data-content="footer.prefix">ساخته شده با </span><span class="footer-heart">❤️</span><span data-content="footer.suffix"> برای دختران زیبای ایران</span></p>
+            <p class="footer-year"><span data-content="footer.year">۱۴۰۵</span> &copy;</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
